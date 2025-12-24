@@ -2,18 +2,30 @@ import Fastify from 'fastify'
 import { knex } from './db/knex.js'
 import { syncAllModels } from './db/sync.js'
 import './models/UserModel.js'
-import { usersRoutes } from './routes/users.js'
+import jwtPlugin from './plugins/jwt.js'
+import authRoutes from './routes/auth.js'
 
 const fastify = Fastify({ logger: true })
 
-fastify.register(usersRoutes, { knex })
+fastify.decorate('knex', knex)
+
+await fastify.register(jwtPlugin)
+
+fastify.register(authRoutes)
 
 async function start() {
-  await syncAllModels()
+  try {
+    await syncAllModels()
 
-  await fastify.listen({ port: 3000 })
+    await fastify.listen({ port: 3000, host: '0.0.0.0' })
 
-  console.log('🚀 Server rodando em http://localhost:3000')
+    console.log('🚀 Server rodando em http://localhost:3000')
+
+  } catch (err) {
+    fastify.log.error(err)
+
+    process.exit(1)
+  }
 }
 
 start()
