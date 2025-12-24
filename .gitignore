@@ -1,0 +1,66 @@
+# ======================
+# Node
+# ======================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ======================
+# Environment variables
+# ======================
+.env
+.env.*
+!.env.example
+
+# ======================
+# Database
+# ======================
+database.sqlite
+database.sqlite-journal
+*.sqlite
+*.db
+
+# ======================
+# Logs
+# ======================
+logs/
+*.log
+
+# ======================
+# Runtime
+# ======================
+dist/
+build/
+.tmp/
+.tmp/
+
+# ======================
+# Nodemon
+# ======================
+.nodemon-debug.log
+
+# ======================
+# OS / Editor
+# ======================
+.DS_Store
+Thumbs.db
+
+# ======================
+# IDEs
+# ======================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ======================
+# Coverage / Tests
+# ======================
+coverage/
+
+# ======================
+# Optional cache
+# ======================
+.cache/
