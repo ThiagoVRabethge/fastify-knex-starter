@@ -2,19 +2,27 @@ import { defineModel } from '../db/registry.js'
 
 defineModel({
   table: 'users',
-
   columns: {
-    id: { type: 'increments', primary: true },
-    name: { type: 'string', notNullable: true },
-    email: { type: 'string', notNullable: true, unique: true },
-
-    jataatesemgraca: {
+    id: {
+      type: 'increments',
+      primary: true
+    },
+    login: {
       type: 'string',
       notNullable: true,
-      defaultTo: ''
+      unique: true
     },
-
-    created_at: { type: 'timestamp', defaultToNow: true },
-    updated_at: { type: 'timestamp', defaultToNow: true }
+    password: {
+      type: 'string',
+      notNullable: true
+    },
+    created_at: {
+      type: 'timestamp',
+      defaultToNow: true
+    },
+    updated_at: {
+      type: 'timestamp',
+      defaultToNow: true
+    }
   }
 })
